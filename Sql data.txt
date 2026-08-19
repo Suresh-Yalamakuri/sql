@@ -1,0 +1,889 @@
+Data:
+-----
+collection of row facts,figures,symbol
+
+it is meaningless and unproceseed
+information:
+-----
+the data is prosessed or meaningfull data
+ex:stdid==101;
+File Management System(Fms)
+-----------------------------
+
+Key function of FMS:
+--------------------
+1)File create
+2)file open
+3)file delete
+4)file read
+5)share data
+6)to provide access.
+
+drabacks FMS:
+--------------
+1)data inconsitency
+2)less security
+3)data redundency
+4)bacup/recovery
+5)data manapulation
+
+Database:
+----------
+database is a tool it is used to store data.
+
+
+Management System:
+-------------------
+to manage data,like retrive,update,delete data
+
+DBMS:
+------
+1) DBMS stands for database management system
+2)it is a software
+3)the main purpose of dbms is used to store data in permenatally,and manage data.
+
+advantages of dbms:
+--------------------
+reduce dataredundency.
+to provide more security
+to improve data inconsitency
+possible to bacup/recovery the data.
+to maintain readability.
+
+
+types of dbms:
+---------------
+nosql dbms:
+------------
+the data is stored into the unstrured format.
+EX:mongodb,postgrace sql
+
+
+RDBMS:
+-------
+it is stands for relational database management system.
+in rdms the data stored into rows and colums(table format).
+the data is stored into the structue format.
+EX:mysql,oracle..etc
+
+Mysql:
+------
+it is database.
+in mysql data is stored into the table format.
+in mysql provide relation ships.
+is to maintain data.
+it is open source database
+it is a free of cost.
+
+fild/column: studentid=101
+record/row:collection of filds.
+Studeid=101,sname='rahul',cource='da';
+table:collection of records and fields.
+
+impotante:
+mysql and oracle defrent?
+
+Data models :
+--------------
+data model is a way of organizing the data and representing the data ,
+how to store data ,how to manipulate the data into dbms.
+
+
+types of data models:
+----------------------
+1)hierarchical data model:
+--------------------------
+the organized data into a tree like structure(parent and chil)
+every child contain only one parent.
+every parent can have multiple childs.
+in that model easy retrive and maintain the data.
+in that above model not comfortable for maintain complex relationships.
+
+EX institute----cource----students
+
+
+network datamodel:
+------------------
+the data is organized into nodes(entities) and edges(relationships)
+in that mode one parent contain contain many childs.
+one child can have many parents.
+
+it flexible for compare hierarchical model.
+
+
+EX: one student can take multiple cources.
+--
+each cource learn multiple students.
+
+
+object printed data model:
+----------------------------
+all data represted at objects.
+every object can have 2 things.
+properties and behaviors.
+
+EX:
+
+
+Relational data modal:
+----------------------
+the data is stored into a table with colums(fields)and rows(records)
+
+EX: Student:sid,sname..etc
+
+
+Datamodel Levels:
+-----------------
+1)conceptual level
+2)logical level
+3)physical level
+
+introduction of sql:
+--------------------
+sql stands for structure qurery language.
+it is used to communicate with databases such as MySQL,oracle,postgresq
+useing sql language:
+to create and delete structre in database.
+to insert,update and delete data.
+easy to retrive the data into a database.
+to provide the control access.
+
+sql language is divided into different categories:
+--------------------------------------------------
+1)DDL
+------
+DDL stands for data definition language.it used to create and manipulation
+database.such as tables,views,database and schema
+1)create
+2)alter
+3)drop
+4)truncate
+5)rename
+
+
+2)DML
+-----
+dml stands for data manipulation language.it used to add,update and
+delete the data.
+1)insert
+2)update
+3)delete
+
+
+3)TCL
+------tcl stand for tranction control language.it is used to tranctions.
+1)commit;
+2)rollback;
+3)savepoint;
+
+4)DQL
+------
+dql stand for data query language.it is used to retrive the data.
+1)select
+
+
+5)DCL
+------
+dcl stand for data control language.it is used to provide controlaccess for database
+1)grant
+2)revoke
+
+
+
+datatypes in sql:
+------------------
+1)nemaric data types
+---------------------
+tinyint------it store small amount of data
+smallint-----
+mediumint-----
+int-----
+bigint----
+float-----
+decimal(p,s)----(3,2)
+(total number of digits before decimal point,total number of digits after decimal point)
+boolean---true or 1/false or 0
+
+
+2)string datatype
+------------------
+char()------it contains fixed lenght--char(2);
+varchar()---->it contains variable length---varchar(20);
+text------
+enum-----it is select only one value in a predefine list.
+coure Enum('java','python','da'):
+
+
+3)date and time datatype
+--------------------------
+date------'yyyy-mm-dd'
+time------'hh-mm-Ss'
+datetime-------'yyyy-mm-dd hh-mm-Ss'
+timestamp-----current time.
+
+
+constratints:
+------------
+
+constraints are used to ruls applied in table coulumns.the main purpose
+of constrants are used ensure data condistency,data integrity,data accuracy
+10unique
+2)not null
+3)primary key
+4)foreign key
+5)check
+6)default
+
+10unique:
+----------
+ensure all the valuses are unique in a column.
+EX:std_id
+
+
+not null:
+---------
+every column must be con
+EX:names
+
+
+3)primary key:
+--------------
+combination not null and unique
+EX:adhar id
+
+
+4)foreign key:
+---------------
+it is used to maintiain the relationship between tables.
+EX: customer,menu
+
+
+5)check:
+---------
+the column values must be contains to above the range.
+ex:age,marks.
+
+
+6)default:
+
+
+
+DDL Commands:
+--------------
+create:
+------------
+creat table table_name(coll dattype constraint_name, optional, co12 
+
+id
+name
+address
+age
+
+creat table employee(id int,name varchar(20),address varchar(20),address varchar(20),age int);
+
+
+desc table_name;//show
+
+
+Alter:
+------
+add column:
+-----------
+
+alter table table_name add coumn (salary decimal(10,2));
+
+alter table table_name add coumn (salary1 decimal(10,2),phonebigint);
+
+remove column:
+--------------
+alter table table_name drop column colname,drop colum colname...etc;
+REname column:
+--------------
+alter table table_name drop column table
+
+modify datatype:
+---------------
+alter table  table_name modify colname updatedtatype;
+
+
+Drop:
+-----
+drop table table_name;
+
+
+Rename:
+-------
+Rename table old to new_name;
+
+
+emplyee:
+--------
+id,name,address,age,phonenum
+
+create table employee (id int primary key,
+
+                     name varchar(20) not null,
+                     address varchar(20) (default 'hyd'),
+                     age int check (age>0 and age<120),
+                     phonenum bigint unique);
+
+create table dept(did int,danme varchar(20),
+
+                 foreign key(did) references employee(id));
+
+add constraint with exsting table:
+create table emp(id in,age int,name varchar(20),
+address varchar(20),dpid int, phonenumber bigint);
+
+
+primary key:
+--------------
+
+
+alter table emp add constraint pk_id  primary key(id);
+alter table emp drop primary key:
+
+
+unique:
+--------
+alter table emp add constraint uk_ph unique(phonenumr);
+alter table emp drop  constraint uk_ph;
+                 
+check:
+-------
+alter table emp add constraint chk_age check(age>18);
+alter table emp drop constraint chk_age:
+
+
+Not Null:
+----------
+alter table emp modify name varchar(20) not null;
+alter table emp modify name varchar(20) Null;
+
+default:
+--------
+alter table emp modify address varchar(20) default "hyd";
+
+alter create table2 add constraint fk foreign key(d_di)
+references emp(id);
+
+
+
+procedure  integrity constraintnt:
+------------------------------------
+referential integrity constraint:
+---------------------------------
+to ensure using the foreign key constraint.
+entity integrity constraint:
+-------------------------------
+primary key
+
+domain integrity constraints:
+------------------------------
+using unique.
+
+
+
+
+DMl commands;
+-----------------
+dam stands for data manuplation language.
+
+the main purpose of dml commands is used to insert or
+manipulate date into a tables,views..etc.
+insert
+update
+delete
+insert:
+-------
+1st way
+----------
+insert into emp values(101,'jaya','kur',23,7887979778,202);
+
+2nd way
+--------
+insert into emp(id,age,name,sddresh,dp,phonenumber)
+values(102,24,'ram','kur1',8,78879797787)
+
+3rd way:
+---------
+insert into emp values(103,24,sraj,kur3,8,8142888338);
+
+4th way:
+--------
+inser  
+
+
+5th Day:
+--------
+creat table new_table name like old_table;
+creat table employee like emp;
+insert into employee select * from emp;
+
+auto_increment:
+----------------
+it is the feature of MySQL.it is automatically generate the number
+when we are insert the new row/record
+
+creat table student (id int primary key auto_increment,
+            name varchar(20),age int
+)'
+
+
+insert into student(name,age) values
+ ('sam',25),('ram',26),('geetha',27);
+
+
+to retrive few columns in a table;
+----------------------------------
+select name,age from student;
+
+where clause
+-------------
+where cluse is used to filter the record/row in a table based
+on codition.
+
+operators:
+-------------
+Arithematic opetators
+----------------------
++,-,*,/,%
+
+relational or comparision operator;
+
+-------------------------------------
+=,>,<,>=,<=,!= or <>
+
+
+10<50 true
+20>40 False
+
+
+
+logical operators:
+------------------
+and, or,not
+
+20>40  and 10>70//f
+20>40 or  10>70 //t
+not 20>80;t
+
+betwise operators:
+----------------------
+&,|,^,<<,>>
+
+2&3
+
+select * from students where age>=30;
+select name,age from students where 
+      age+25or age=60
+
+select * from from students where age!=25;
+
+alias name:
+============
+alias name used to customize the name for
+as -------------alis
+
+select name,age,age-10 as sub from students;
+
+
+
+Predicates/special opeatoors:
+-------------------------------
+it is a condition.this operators mainly used to to range of 
+comparision.
+Between
+in
+is null
+like
+
+between:
+------------
+to retrive the values between range of 10 to 20
+
+value>=10 and value<=20;
+value between 10 and 20;
+value not between 10 and 20;
+
+In:
+----
+val=10 or val=20
+val in(10,20);
+val not in (10,20);
+
+is null:
+--------
+it retunrns null value rows.
+name is null;
+name is not null;
+
+
+like:
+------
+like operator is used to pattern matching
+it contains 2 wildcards:
+
+1)_(underscore):
+-----------------
+it is reprent the single character.
+name like '___';
+2)%:
+----
+it is indicate zero or more characters
+name like 'a%';
+name like '%a%'
+name like '%_'
+name like '%h';
+name like '%h_'
+name not like '%h%';
+name not like 'a%'
+
+isnull():
+----------
+salary:
+-------
+20000
+null
+40000
+null
+30000
+
+slect salary isnull(salary) from emp:
+salary:
+==========
+o
+1
+0
+1
+0
+ifNull():
+----------
+select salary ifNull(salary,1000) from emp:
+20000
+null
+40000
+null
+3000
+
+salary:
+-----------
+200000
+1000
+40000
+10000
+3000
+
+
+update:
+-------
+update command mainly used to manipulate  date 
+
+update table_name set updatecondition;
+update table_name set updatecondition where codintion;
+
+Delete:
+-------
+delete command is used to remove all date or particular date.
+
+syntax:
+------------
+delete from tablename://total data 
+delete from tablename where codition;
+
+drop:
+=====
+totaldata+structue;
+
+delete
+-------
+total date or particular date but not structure.
+
+truncate:
+-----------
+truncate table tablename;
+remove total data immediately but not structure.
+
+
+limit:
+-------
+limit is used restrict the retrive rows.
+select * from product limit no.of rows;
+select *from product limit 5;
+
+
+aggregate functions;
+-------------------------
+the main purpose of aggregate functions is use perform
+mathematical calculation in multiple rows and return
+single value.
+
+count(*);
+----------
+it returns no.of rows count value.
+
+sum(column name);
+it return a sum of all values in a column .
+select sum(quantity) from product;
+
+avg(columname);
+it return a avg of all values in column
+Max(column name);
+-----------------
+to return a maximum value in acolumn
+select  max(price)from product;
+min(colname);
+---------------
+to return a minimum value in acolumn
+select min(price) from product;
+
+
+group by:
+----------
+to divede the data into a grop of same values.
+
+select category, from product group by category;
+
+
+select category,count(*)fromn product
+group by  category;
+
+slect category, sum(quantity) from product
+group by category;
+
+select category,avg(quantity) from product
+group by category;
+
+select product_name,max(price) from product
+group by category;
+
+select dept,job ,sum(sal) from employee
+group by dept,job;
+
+8th Day:
+-----------
+how to add the new column an exasting table at particular place.
+
+create table student(id int, name varchar(20),ahe int)
+
+alter table student add column email varchar(20) first;
+
+desc student;
+
+
+alter table student add column dob date after name;
+
+
+
+cse  10
+ece  12
+mech  5
+civil 8
+
+select dept count(*) from student group by dept;
+
+
+having cluse:
+----------------
+the having cluse is used to filter the qroups.
+the having cluse is used to condition for aggregate function.
+having cluse always written into a after group by.
+
+
+
+find the dept whose dept student is greater 10?
+-------------------------------------------------------
+select dept,count(*)as tcount from student group by dept having tcount>10;
+to find the max price of each category and to retrive only which categories maximum
+price is greater than 500000.
+
+select category,max(price) from product group by
+category;
+
+select category,max(price) from product group by
+category;
+
+order by:
+--------
+order by cluse is used to sort values based on column
+syntax:
+------------
+Asc:it represent accending order.
+desc: it represent decending order.
+
+the default nature of  order by cluse is accending order.
+
+select * from product order by price;
+select * from product order by price
+select * from product order by asc;
+
+
+
+find the eachcategory count and to retrive categories is ace order.
+
+select category ;
+
+
+select category,count(*)as tcount from product group by
+category order by tcount;
+
+writing order:
+--------------
+where
+group by
+having
+ordxer by
+limit
+
+
+distict:
+it is used to remove the duplicates or find the unique data.
+
+9th Day:
+----------
+NumaricFuctions in sql;
+--------------------------
+1)round();
+----------
+it retrun a round of value at specified no.of decimal place.
+
+round(123.456,2);123.46
+
+2)sqrt():
+------------
+it retrun a sqrt of value
+
+3)power();
+-----------
+
+$)mod();
+---------
+
+5)abs();
+---------
+
+6)sign();
+---------------------
+it return 0 or 1(+ve)  or -1(-ve)
+
+7)CEiL():
+-------
+it retun nearest higher value.
+
+8)FLOOR():
+----------
+it return nearest lower value.
+
+9)RAND():
+----------
+it returns random decimal values between 0 and 1.
+
+
+10)GREATEST();
+--------------
+it return maximum value in given values.
+
+11)LEAST():
+--------------
+it return minimum value in given values.
+
+strin:
+-------
+UPPER():
+----------
+to convert all characters into uppercase
+
+lower():
+---------
+it convert all characters into a lowercase.
+
+length():
+----------
+it return a length of given string.
+
+CHAR_LENGTH():
+---------------------
+it return total count of characters into given string.
+
+
+SUBSTRING
+------------
+to extract the particular range of String.
+
+
+MySQL developer
+
+LEFT():
+--------
+to return particular range of characters into left side:
+
+RIGHT():
+----------
+to return particular range of character into right side.
+
+CONCAT():
+---------
+combine the two or more strings.
+
+CONCAT_WS():
+------------
+it is used combine the two or more strings speperate with
+seperator.
+
+REPLACE():
+----------
+it is used to replace the old string to new String.
+
+
+TRIM():
+------
+it remove first and last spaces.
+
+LPAD():
+-----------
+to add the character at to reach length of string 
+
+lpad('mysql',10,'*')
+
+RPAD();
+----------
+
+LOCATE()
+----------
+to return a locate value in a string.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
