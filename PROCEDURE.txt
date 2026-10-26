@@ -1,0 +1,57 @@
+DELIMITER //
+
+CREATE PROCEDURE GetUserDetails(IN p_user_id INT)
+BEGIN
+
+    SELECT
+        user_id,
+        username,
+        age,
+        gender,
+        country,
+        signup_date
+    FROM users
+    WHERE user_id = p_user_id;
+
+END //
+
+DELIMITER ;
+
+DELIMITER //
+
+CREATE PROCEDURE GetUserPosts(IN p_user_id INT)
+BEGIN
+
+    SELECT
+        post_id,
+        post_date,
+        post_type,
+        caption
+    FROM posts
+    WHERE user_id = p_user_id
+    ORDER BY post_date;
+
+END //
+
+DELIMITER ;
+
+
+DELIMITER //
+
+CREATE PROCEDURE GetTopPosts(IN p_limit INT)
+BEGIN
+
+    SELECT
+        post_id,
+        post_type,
+        total_likes,
+        total_comments,
+        total_shares,
+        total_engagement
+    FROM post_engagement
+    ORDER BY total_engagement DESC
+    LIMIT p_limit;
+
+END //
+
+DELIMITER ;

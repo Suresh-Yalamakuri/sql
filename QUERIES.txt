@@ -1,0 +1,93 @@
+1). SELECT u.user_id,u.username,p.post_id,p.post_type,p.post_date,p.caption FROM users u INNER JOIN posts p
+    ON u.user_id = p.user_id;
+
+2). SELECT
+    u.user_id,
+    u.username,
+    p.post_id,
+    p.post_type
+FROM users u
+LEFT JOIN posts p
+    ON u.user_id = p.user_id;
+
+3). SELECT
+    p.post_id,
+    u.username,
+    u.country,
+    u.gender,
+    p.post_date,
+    p.post_type,
+    p.caption
+FROM users u
+JOIN posts p
+    ON u.user_id = p.user_id;
+
+4). SELECT
+    u.username,
+    COUNT(p.post_id) AS total_posts
+FROM users u
+LEFT JOIN posts p
+    ON u.user_id = p.user_id
+GROUP BY u.user_id, u.username;
+
+5). SELECT
+    country,
+    COUNT(*) AS total_users
+FROM users
+GROUP BY country;
+
+6).
+SELECT
+    post_type,
+    COUNT(*) AS total_posts
+FROM posts
+GROUP BY post_type;
+
+
+7). views 
+SELECT *
+FROM user_post_summary
+WHERE total_posts > 1;
+
+8). SELECT *
+FROM post_engagement
+ORDER BY total_engagement DESC
+LIMIT 5;
+
+9).procedures
+
+CALL GetUserDetails(1);
+
+10).
+CALL GetUserPosts(1);
+
+
+procedure:
+11). SELECT *
+FROM post_engagement;
+
+12). SELECT
+    post_id,
+    caption,
+    total_likes,
+    total_comments,
+    total_shares,
+    total_engagement,
+    RANK() OVER (
+        ORDER BY total_engagement DESC
+    ) AS engagement_rank
+FROM post_engagement;
+
+13). SELECT *
+FROM
+(
+    SELECT
+        post_id,
+        caption,
+        total_engagement,
+        RANK() OVER (
+            ORDER BY total_engagement DESC
+        ) AS engagement_rank
+    FROM post_engagement
+) AS ranked_posts
+WHERE engagement_rank <= 3;

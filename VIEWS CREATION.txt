@@ -1,0 +1,147 @@
+CREATE VIEW user_post_summary AS
+SELECT
+    u.user_id,
+    u.username,
+    u.country,
+    u.gender,
+    u.age,
+    COUNT(p.post_id) AS total_posts
+FROM users u
+LEFT JOIN posts p
+    ON u.user_id = p.user_id
+GROUP BY
+    u.user_id,
+    u.username,
+    u.country,
+    u.gender,
+    u.age;
+
+
+
+CREATE VIEW post_engagement AS
+SELECT
+    p.post_id,
+    p.user_id,
+    p.post_date,
+    p.post_type,
+    p.caption,
+
+    (SELECT COUNT(*)
+     FROM likes l
+     WHERE l.post_id = p.post_id) AS total_likes,
+
+    (SELECT COUNT(*)
+     FROM comments c
+     WHERE c.post_id = p.post_id) AS total_comments,
+
+    (SELECT COUNT(*)
+     FROM shares s
+     WHERE s.post_id = p.post_id) AS total_shares,
+
+    (
+        (SELECT COUNT(*)
+         FROM likes l
+         WHERE l.post_id = p.post_id)
+        +
+        (SELECT COUNT(*)
+         FROM comments c
+         WHERE c.post_id = p.post_id)
+        +
+        (SELECT COUNT(*)
+         FROM shares s
+         WHERE s.post_id = p.post_id)
+    ) AS total_engagement
+
+FROM posts p;
+
+
+
+CREATE VIEW user_engagement AS
+SELECT
+    u.user_id,
+    u.username,
+    u.country,
+
+    COUNT(DISTINCT l.like_id)
+    +
+    COUNT(DISTINCT c.comment_id)
+    +
+    COUNT(DISTINCT s.share_id) AS total_engagement
+
+FROM users u
+
+LEFT JOIN posts p
+    ON u.user_id = p.user_id
+
+LEFT JOIN likes l
+    ON p.post_id = l.post_id
+
+LEFT JOIN comments c
+    ON p.post_id = c.post_id
+
+LEFT JOIN shares s
+    ON p.post_id = s.post_id
+
+GROUP BY
+    u.user_id,
+    u.username,
+    u.country;
+
+
+
+CREATE VIEW post_type_performance AS
+SELECT
+    p.post_type,
+
+    COUNT(DISTINCT p.post_id) AS total_posts,
+
+    COUNT(DISTINCT l.like_id) AS total_likes,
+
+    COUNT(DISTINCT c.comment_id) AS total_comments,
+
+    COUNT(DISTINCT s.share_id) AS total_shares
+
+FROM posts p
+
+LEFT JOIN likes l
+    ON p.post_id = l.post_id
+
+LEFT JOIN comments c
+    ON p.post_id = c.post_id
+
+LEFT JOIN shares s
+    ON p.post_id = s.post_id
+
+GROUP BY p.post_type;
+
+
+
+CREATE VIEW country_performance AS
+SELECT
+    u.country,
+
+    COUNT(DISTINCT u.user_id) AS total_users,
+
+    COUNT(DISTINCT p.post_id) AS total_posts,
+
+    COUNT(DISTINCT l.like_id) AS total_likes,
+
+    COUNT(DISTINCT c.comment_id) AS total_comments,
+
+    COUNT(DISTINCT s.share_id) AS total_shares
+
+FROM users u
+
+LEFT JOIN posts p
+    ON u.user_id = p.user_id
+
+LEFT JOIN likes l
+    ON p.post_id = l.post_id
+
+LEFT JOIN comments c
+    ON p.post_id = c.post_id
+
+LEFT JOIN shares s
+    ON p.post_id = s.post_id
+
+GROUP BY u.country;
